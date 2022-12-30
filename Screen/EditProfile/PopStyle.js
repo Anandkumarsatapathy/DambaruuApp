@@ -1,0 +1,101 @@
+import { StyleSheet } from "react-native";
+const Style = StyleSheet.create({
+  container: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#f5c842",
+  },
+  image: {
+    marginTop: 40,
+    alignItems: "center",
+  },
+  flexContainer: {
+    marginTop: 20,
+    flex: 1,
+    backgroundColor: "white",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+  textContainer: {
+    textAlign: "center",
+    fontSize: 20,
+    marginTop: 30,
+    color: "blue",
+    fontSize: 30,
+    alignItems: "center",
+    fontWeight: "bold",
+  },
+  flexcardContainer: {
+    display: "inline-block",
+    marginTop: 30,
+    width: 130,
+    height: 140,
+    borderRadius: 10,
+    cursor: "pointer",
+    backgroundColor: "#a5edf0",
+  },
+  modalContainer:{
+    width: "100%",
+    height: "57%",
+    backgroundColor: "white",
+    padding: 40,
+    borderRadius: 20,
+    elevation: 20,
+    alignSelf: "center",
+    shadowOffset: { width: -2, height: 4 },
+    shadowColor: "#171717",
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  flexCard: {
+    flex: 1,
+    height: 300,
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  header: {
+    width: '100%',
+    height: 40,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+  flexButton: {
+    marginTop: 300,
+    width: 250,
+    height: 90,
+    gap: 40,
+  },
+  viewModalBackground:{
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalButton: {
+    marginTop:20,
+    width: 250,
+    height: 90,
+    alignItems: "center",
+    
+  },
+  button: {
+    width: 160,
+    height: 45,
+    marginTop: 30,
+    alignSelf: "center",
+    alignItems: "center",
+    backgroundColor: "blue",
+    borderRadius: 40,
+    color: "white",
+    shadowOffset: {width: -2, height: 4},  
+    shadowColor: '#171717',  
+    shadowOpacity: 0.2,  
+    shadowRadius: 3
+  },
+});
+
+export default Style;

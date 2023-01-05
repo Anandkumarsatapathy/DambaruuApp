@@ -19,12 +19,11 @@ const styles = StyleSheet.create({
     borderRadius: 200.5,
   },
   normalText: {
-    ...Font.fs22L,
     color: Color.blueColor,
     letterSpacing: 1,
   },
   boldText: {
-    ...Font.fs22M,
+    ...Font.fs26,
     color: Color.blueColor,
     letterSpacing: 1,
     lineHeight: 40,
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     paddingHorizontal: 15,
-    ...Font.f15,
+    ...Font.fs15,
     height: 45,
     color: Color.inputTextColor,
     ...cs.flex,
@@ -72,6 +71,10 @@ const styles = StyleSheet.create({
   girlImgView: {
     marginTop: height / 20,
     ...cs.ac,
+  },
+  nameStyle: {
+    ...Font.fs16,
+    color: Color.blueColor,
   },
 });
 

@@ -9,6 +9,7 @@ import {
   View,
   Text,
   Alert,
+  ImageBackground,
 } from "react-native";
 import { useWindowDimensions } from "react-native";
 import { InterruptionModeIOS, Video } from "expo-av";
@@ -138,18 +139,18 @@ const VideoScreen = ({ route, navigation }) => {
     <SafeAreaView style={[styles.container, { width: width, height: height }]}>
       {/* Video Player */}
       <Video
-        style={[styles.flexVideo, ]}
+        style={[styles.flexVideo]}
         source={{
           uri: intial,
         }}
-        resizeMode="cover"
+        resizeMode="contain"
         rate={1.0}
         volume={1.0}
         isMuted={false}
         isLooping={false}
         shouldPlay={false}
         positionMillis
-        useNativeControls
+        useNativeControls={true}
         onPlaybackStatusUpdate={(playbackStatus) => {
           if (!playbackStatus.isLoaded) {
             // Update your UI for the unloaded state
@@ -185,7 +186,11 @@ const VideoScreen = ({ route, navigation }) => {
             <View>
               {questionData && questionData.content_questions && (
                 <Text
-                  style={{ fontSize: 25, color: "black", alignSelf: "center" }}
+                  style={{
+                    fontSize: 25,
+                    color: "black",
+                    alignSelf: "center",
+                  }}
                 >
                   Question: {questionData.content_questions[count].question}
                 </Text>
@@ -229,47 +234,103 @@ const VideoScreen = ({ route, navigation }) => {
         </ModalPopup>
       )}
       {/* Right Modal */}
-      <ModalPopup visible={rightanswer}>
+      <ModalPopup visible={rightanswer} style={styles.modalContainer}>
         <View style={styles.modalContainer}>
-          <Text>{"Right Answer"}</Text>
-          <TouchableOpacity
-            onPress={() => nextQuestion()}
-            style={styles.button}
-          >
-            <Text
-              style={{
-                fontSize: 20,
-                color: "white",
-                fontWeight: "bold",
-                marginTop: 5,
-                marginBottom: 10,
-              }}
-            >
-              Continue
-            </Text>
-          </TouchableOpacity>
+          <View style={{ flex: 1, flexDirection: "row" }}>
+            <View style={{ flex: 1, flexDirection: "column" }}>
+              <View style={{ flex: 1 }}>
+                <Text
+                  style={{
+                    fontSize: 23,
+                    fontWeight: "bold",
+                    color: "#194792",
+                    marginTop: 55,
+                    textAlign: "center",
+                  }}
+                >
+                  CONGRATULATIONS!!
+                </Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <TouchableOpacity
+                  onPress={() => nextQuestion()}
+                  style={styles.button}
+                >
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      color: "white",
+                      fontWeight: "bold",
+                      marginTop: 5,
+                      marginBottom: 10,
+                    }}
+                  >
+                    Next Question
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={{ flex: 1 }}>
+              <Image
+                source={require("../../assets/images/chandTara.png")}
+                style={{
+                  marginLeft: 35,
+                  marginTop: 5,
+                  resizeMode: "cover",
+                }}
+              />
+            </View>
+          </View>
         </View>
       </ModalPopup>
       {/*Worng Modal */}
       <ModalPopup visible={wornganswer} style={styles.modalContainer}>
         <View style={styles.modalContainer}>
-          <Text>{"Worng Answer"}</Text>
-          <TouchableOpacity
-            onPress={() => setWornganswer(false)}
-            style={styles.button}
-          >
-            <Text
-              style={{
-                fontSize: 20,
-                color: "white",
-                fontWeight: "bold",
-                marginTop: 5,
-                marginBottom: 10,
-              }}
-            >
-              Try again
-            </Text>
-          </TouchableOpacity>
+          <View style={{ flex: 1, flexDirection: "row" }}>
+            <View style={{ flex: 1, flexDirection: "column" }}>
+              <View style={{ flex: 1 }}>
+                <Text
+                  style={{
+                    fontSize: 23,
+                    fontWeight: "bold",
+                    color: "#194792",
+                    marginTop: 55,
+                    textAlign: "center",
+                  }}
+                >
+                  ohh,Sorry!!
+                </Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <TouchableOpacity
+                  onPress={() => setWornganswer(false)}
+                  style={styles.button}
+                >
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      color: "white",
+                      fontWeight: "bold",
+                      marginTop: 5,
+                      marginBottom: 10,
+                    }}
+                  >
+                    Try Again
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={{ flex: 1 }}>
+              <Image
+                source={require("../../assets/images/taraTryAgain.png")}
+                style={{
+                  marginLeft: 35,
+                  marginTop: 30,
+                  resizeMode: "cover",
+                }}
+              />
+            </View>
+          </View>
         </View>
       </ModalPopup>
 
@@ -286,44 +347,48 @@ const VideoScreen = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ccebd4",
-   
+    width: "100%",
+    height: "100%",
   },
   item: {
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    padding: 5,
+    marginVertical: 5,
+    marginHorizontal: 10,
     width: 110,
     height: 100,
     borderRadius: 10,
     alignSelf: "center",
   },
   flexImage: {
-    width: 110,
-    height: 100,
+    width: 100,
+    height: 90,
     margin: 0,
-    borderRadius: 10,
+    borderRadius: 12,
   },
   flexVideo: {
-    width: 720,
-    height: 240,
+    width: 420,
+    height: 230,
+    marginTop: 10,
+    padding: 20,
     alignSelf: "center",
-    marginBottom: -40,
+
+    borderRadius: 10,
+
     justifyContent: "center",
   },
   viewModalBackground: {
     width: 600,
     height: 200,
     borderRadius: 20,
-    backgroundColor: "yellow",
+
     alignItems: "center",
     marginBottom: -40,
     marginLeft: 60,
   },
   modalContainer: {
-    width: 600,
-    height: 200,
-    backgroundColor: "white",
+    width: 500,
+    height: 230,
+    backgroundColor: "#E9F1FF",
 
     borderRadius: 20,
     elevation: 20,
@@ -334,6 +399,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
   },
+ 
   button: {
     width: 160,
     height: 45,

@@ -13,22 +13,32 @@ import {
 } from "react-native";
 
 import React, { createContext, useState } from "react";
-import styles from "./LoginStyle.js";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 import ChildInfoVariant from "../ChildInfoVariant/ChildInfoVariant.js";
 import DropdownAlert from "react-native-dropdownalert";
 import client from "../../Utils/Api";
 import * as SecureStore from "expo-secure-store";
-// import { image,cs,fonts,Color} from "../../AppConfig";
+import { StyleSheet, Dimensions } from "react-native";
 import image from "../../AppConfig/image.js";
 import cs from "../../AppConfig/CommonStyle.js";
+import Font from "../../AppConfig/fonts.js";
+import Color from "../../AppConfig/colors.js";
+const { width, height } = Dimensions.get("window");
+import { useFonts, Schoolbell_400Regular } from "@expo-google-fonts/schoolbell";
 
 // eslint-disable-next-line react/prop-types
 const Login = ({ navigation }) => {
-  const { height, width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const [mobile, setMobile] = useState(""); // Intial mobinumber"
   const [mobileno, setMobileno] = useState(""); //after Check Mobile number
+  /*Fonts*/
+  // let [fontsLoaded] = useFonts({
+  //   Schoolbell_400Regular,
+  // });
+  // if (!fontsLoaded) {
+  //   return null;
+  // }
   /* validation of mobile No */
   const submitNo = (mobile) => {
     const phoneno = /^\d{10}$/;
@@ -119,7 +129,7 @@ const Login = ({ navigation }) => {
             </View>
             <View style={styles.subView}>
               <Text style={styles.normalText}>Enter your</Text>
-              <Text style={styles.boldText}>Mobile Number</Text>
+              <Text style={styles.normalText}>Mobile Number</Text>
               <Text style={styles.grayText}>
                 We will send you a confirmation code
               </Text>
@@ -132,7 +142,7 @@ const Login = ({ navigation }) => {
                   style={styles.inputStyle}
                   onChangeText={(text) => setMobile(text)}
                   value={mobile}
-                  // maxLength={10}
+                  maxLength={10}
                 />
               </View>
               <View style={cs.ac}>
@@ -148,5 +158,79 @@ const Login = ({ navigation }) => {
     </>
   );
 };
-
 export default Login;
+const styles = StyleSheet.create({
+  mainView: {
+    ...cs.flex,
+    backgroundColor: Color.themeColor,
+  },
+  gradientCircle: {
+    position: "absolute",
+    width: 385,
+    height: 385,
+    left: 67,
+    top: -66,
+    borderRadius: 200.5,
+  },
+  normalText: {
+    fontSize: 25,
+
+    fontFamily: "Schoolbell_400Regular",
+  
+    color: Color.blueColor,
+    letterSpacing: 1,
+  },
+  boldText: {
+    fontFamily: "Schoolbell_400Regular",
+    fontSize: 25,
+    fontWeight: "bold",
+    color: Color.blueColor,
+    letterSpacing: 1,
+    lineHeight: 40,
+  },
+  grayText: {
+    fontFamily: "Schoolbell_400Regular",
+    fontSize: 19,
+    color: Color.grayColor,
+  },
+  subView: {
+    ...cs.flex,
+    backgroundColor: Color.white,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 20,
+    height: height / 1.7,
+    marginTop: -30,
+  },
+  inputView: {
+    flexDirection: "row",
+    backgroundColor: Color.inputBGColor,
+    borderRadius: 8,
+    alignItems: "center",
+    marginVertical: 30,
+    paddingHorizontal: 10,
+  },
+  flagView: {
+    width: 26,
+    height: 38,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  flag: {
+    resizeMode: "contain",
+    width: 42,
+    height: 41,
+  },
+  inputStyle: {
+    paddingHorizontal: 15,
+    fontFamily: "Schoolbell_400Regular",
+     fontSize:22,
+    height: 45,
+    color: Color.inputTextColor,
+    ...cs.flex,
+  },
+  girlImgView: {
+    marginTop: height / 20,
+    ...cs.ac,
+  },
+});

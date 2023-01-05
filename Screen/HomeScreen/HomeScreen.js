@@ -18,7 +18,7 @@ import { useWindowDimensions } from "react-native";
 import { Entypo, FontAwesome } from "@expo/vector-icons";
 import Footer from "../../Components/Footer/FooterScreen";
 import cs from "../../AppConfig/CommonStyle.js";
-import fonts from "../../AppConfig/fonts.js";
+import Font from "../../AppConfig/fonts.js";
 import Color from "../../AppConfig/colors.js";
 import { config } from "../../Utils/Api";
 import { useRoute } from "@react-navigation/native";
@@ -197,8 +197,8 @@ const HomeScreen = ({ navigation}) => {
           <Text
             style={{
               height: 33,
-              width:width -220,
-              fontSize: 18,
+              width: width - 220,
+              ...Font.fs26,
               marginLeft: 0,
               marginTop: 5,
               backgroundColor: "#194792",
@@ -249,6 +249,7 @@ const HomeScreen = ({ navigation}) => {
                 marginTop: 22,
                 fontSize: 25,
                 fontWeight: "500",
+                ...Font.fs26,
                 // color:"#194792",
               }}
             >
@@ -274,10 +275,10 @@ const HomeScreen = ({ navigation}) => {
                 >
                   <View
                     style={{
-                      width: width /2,
-                      height: height-550,
+                      width: width / 2,
+                      height: height - 550,
                       justifyContent: "space-evenly",
-                      
+
                       marginTop: 45,
                       justifyContent: "center",
                       alignItems: "center",
@@ -286,8 +287,8 @@ const HomeScreen = ({ navigation}) => {
                     <Image
                       source={{ uri: item.subject_image }}
                       style={{
-                        width: width /2.1,
-                        height: height /3.6,
+                        width: width / 2.1,
+                        height: height / 3.6,
                         borderRadius: 12,
                         resizeMode: "cover",
                         borderColor: "#194792",
@@ -298,7 +299,7 @@ const HomeScreen = ({ navigation}) => {
                       style={{
                         position: "absolute",
                         width: width / 3.35,
-                        height: height -540,
+                        height: height - 540,
                         justifyContent: "flex-end",
                         alignItems: "center",
                       }}

@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { useWindowDimensions } from "react-native";
 import { Dimensions } from "react-native";
+import Font from "../../AppConfig/fonts.js";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 const { width, height } = Dimensions.get("window");
@@ -65,11 +66,10 @@ const Styles = StyleSheet.create({
     textShadowColor: "white",
     alignItems: "center",
     textAlign: "center",
-    fontSize: 20,
+    ...Font.fs26,
     color: "white",
     marginRight: 60,
 
-     fontFamily: "Times New Roman",
     textShadowColor: "#343434",
     textShadowOffset: { width: 0.7, height: 0.7 },
     textShadowRadius: 5,

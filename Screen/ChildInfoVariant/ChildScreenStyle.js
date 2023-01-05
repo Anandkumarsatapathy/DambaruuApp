@@ -82,7 +82,7 @@ const Style = StyleSheet.create({
   },
   modalcross: {
     marginLeft: 265,
-     marginTop:65,
+    marginTop: 65,
   },
 
   button: {
@@ -161,7 +161,8 @@ const Style = StyleSheet.create({
   },
   inputStyle: {
     paddingHorizontal: 15,
-    ...Font.f15,
+    ...Font.fs18,
+
     height: 45,
     color: Color.inputTextColor,
     ...cs.flex,
@@ -181,7 +182,7 @@ const Style = StyleSheet.create({
   },
   ageFont: {
     marginTop: 60,
-
+    ...Font.fs18,
     width: width / 1.9,
     height: 90,
     textShadowColor: "white",
@@ -189,10 +190,10 @@ const Style = StyleSheet.create({
     textAlign: "center",
     fontSize: 18,
     color: "#194792",
-    // fontFamily: "Times New Roman",
+
     textShadowColor: "#194792",
-    textShadowOffset: { width: 0.7, height: 0.7 },
-    textShadowRadius: 3,
+    textShadowOffset: { width: 0.2, height: 0.3 },
+    textShadowRadius: 2,
   },
   bgimage: {
     borderTopLeftRadius: 20,

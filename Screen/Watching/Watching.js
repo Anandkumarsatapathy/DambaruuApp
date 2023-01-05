@@ -16,16 +16,17 @@ import { LinearGradient } from "expo-linear-gradient";
 import image from "../../AppConfig/image.js";
 import cs from "../../AppConfig/CommonStyle.js";
 import client from "../../Utils/Api";
+import fonts from "../../AppConfig/fonts.js";
 import * as SecureStore from "expo-secure-store";
-const Watching = ({ navigation, route }) => {
+const Watching = ({ navigation }) => {
   const { width, height } = useWindowDimensions();
   const [userdata, setUserdata] = useState([]);
+  console.log(userdata);
   const [token, setToken] = useState("");
   const [buttonDisbale, setButtonDisbale] = useState(true);
   const [erroMessage, setErroMessage] = useState("");
   /**Fetching profile Images */
   const getProfileImages = (tokenId) => {
-    console.log("Watching Id:-", tokenId);
     client
       .post("/user/get-user-profile/", {
         txn_id: tokenId,
@@ -36,6 +37,7 @@ const Watching = ({ navigation, route }) => {
           SecureStore.setItemAsync("Token", token.toString());
           console.log(response?.data?.data);
           setUserdata(response?.data?.data);
+          setToken(response?.data?.data[0]?.token);
         } else {
           console.log(response);
         }
@@ -83,15 +85,23 @@ const Watching = ({ navigation, route }) => {
             <FlatList
               horizontal={true}
               data={userdata}
-              // extraData={selectedAvtar}
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => (
-                <TouchableOpacity >
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("Home", {
+                      ageGroup: item.standard,
+                      stdName: item.name,
+                      toked: item.token,
+                      proAvatar: item.profile_picture,
+                    });
+                  }}
+                >
                   <View
                     style={{
                       justifyContent: "space-evenly",
+
                       margin: 10,
-                      //backgroundColor:"blue",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -112,11 +122,10 @@ const Watching = ({ navigation, route }) => {
                         width: width / 4,
                         borderRadius: 20,
                         backgroundColor: "#e5e5e5",
-
                         textAlign: "center",
                         borderWidth: 0.2,
                         borderColor: "#194792",
-                        fontFamily: "Times New Roman",
+                        fontFamily: "Schoolbell_400Regular",
                         textShadowColor: "#194792",
                         textShadowOffset: { width: 0.5, height: 0.2 },
                         textShadowRadius: 0.2,

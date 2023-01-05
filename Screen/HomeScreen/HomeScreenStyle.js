@@ -1,6 +1,8 @@
 import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
+import Font from "../../AppConfig/fonts.js";
 const { width, height } = Dimensions.get("window");
+ 
 const Styles = StyleSheet.create({
   homeContainer: {
     backgroundColor: "white",
@@ -16,15 +18,15 @@ const Styles = StyleSheet.create({
   },
   subFont: {
     color: "white",
-    textAlign: "center",
+   
     fontWeight: "500",
-    
+    ...Font.fs20,
     textShadowColor: "white",
     alignItems: "center",
     textAlign: "center",
-    fontSize: 17,
+   
     color: "white",
-    // fontFamily: "Times New Roman",
+   
     textShadowColor: "#194792",
     textShadowOffset: { width: 0.8, height: 0.8 },
     textShadowRadius: 3,

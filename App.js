@@ -22,8 +22,16 @@ import Footer from "./Components/Footer";
 import Parentquiz from "./Screen/Parents2/Parents2";
 import parent from "./Screen/Parents/ParentScreen";
 import Logout from "./Screen/Logout/LogoutScreen";
+import { useFonts, Schoolbell_400Regular } from "@expo-google-fonts/schoolbell";
 const Stack = createNativeStackNavigator();
 export default function App() {
+
+    let [fontsLoaded] = useFonts({
+      Schoolbell_400Regular,
+    });
+    if (!fontsLoaded) {
+      return null;
+    }
   return (
     <SafeAreaProvider>
       <NavigationContainer>
@@ -34,6 +42,7 @@ export default function App() {
           }}
         >
           <Stack.Screen name="Splashscreen" component={Splashscreen} />
+
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="OTP" component={OTP} />
           <Stack.Screen name="Watch" component={Watching} />

@@ -22,6 +22,7 @@ export default commonStyle = {
   },
   commonBtnText: {
     ...Font.fs15M,
+
     color: Color.white,
     letterSpacing: 1,
   },

@@ -21,6 +21,23 @@ const styles = StyleSheet.create({
     width: windowWidth,
     height: windowHeight,
   },
+  ingredientsText: {
+    //fontFamily: AppFonts.Primary.Sans.Regular,
+    fontStyle: "normal",
+    fontWeight: "400",
+    alignSelf: "center",
+    fontSize: 12,
+    color: "black",
+  },
+
+  gridIngredients: {
+    marginTop: 12,
+    width: "60%",
+    flexDirection: "row",
+    justifyContent: "center",
+    
+    
+  },
 });
 
 export default styles;

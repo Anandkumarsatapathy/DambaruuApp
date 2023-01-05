@@ -10,6 +10,7 @@ import {
   useWindowDimensions,
   ScrollView,
   ImageBackground,
+  ToastAndroid,
 } from "react-native";
 import styles from "./ChildScreenStyle";
 import cardData from "../../CardData/InfoData";
@@ -22,7 +23,7 @@ import cs from "../../AppConfig/CommonStyle.js";
 import fonts from "../../AppConfig/fonts.js";
 import client from "../../Utils/Api";
 import { Entypo } from "@expo/vector-icons";
-import * as SecureStore from "expo-secure-store"; 
+import * as SecureStore from "expo-secure-store";
 
 /**Modal Popup */
 const ModalPopup = ({ visible, children }) => {
@@ -61,9 +62,7 @@ const ChildInfoVariant = ({ navigation }) => {
   /*Fetch the Age group */
   const getMyPostData = async () => {
     try {
-      const res =  await client.get(
-        "/courses/standard/"
-      );
+      const res = await client.get("/courses/standard/");
       setMyData(res?.data?.data);
     } catch (error) {
       setIsError(error.message);
@@ -82,18 +81,15 @@ const ChildInfoVariant = ({ navigation }) => {
 
   const getProfileAvtar = async () => {
     try {
-      const res = await client.get(
-        "/user/profileAvatar"
-      );
+      const res = await client.get("/user/profileAvatar");
       setAvtar(res.data.data);
       SecureStore.getItemAsync("mobileNumber")
-        .then((response) => {  
+        .then((response) => {
           setMobile(response);
         })
         .catch(function (error) {
           console.log(error);
         });
-
     } catch (error) {
       setIsError(error.message);
     }
@@ -101,6 +97,7 @@ const ChildInfoVariant = ({ navigation }) => {
   useEffect(() => {
     getProfileAvtar();
   }, []);
+
 
   
 
@@ -118,6 +115,7 @@ const ChildInfoVariant = ({ navigation }) => {
       })
       .then((response) => {
         if (response.data.status === "success") {
+        
           navigation.navigate("Home", {
             ageGroup: selectedAge,
             stdName: response.data.data.name,

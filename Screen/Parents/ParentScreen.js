@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground, FlatList, Image } from "react-native";
 import React from "react";
 import styles from "./PraentStyle";
 import {
@@ -11,7 +11,9 @@ import CardScreen from "../../Components/Card/CardScreen";
 import CustomButton from "../../Components/Button/CustomButton";
 import FooterScreen from "../../Components/Footer/FooterScreen";
 import { SafeAreaView } from "react-native";
+ import Data from "../../CardData/ParentData";
 const PraentScreen = () => {
+  console.log(Data);
   return (
     <SafeAreaView style={styles.homeContainer}>
       <ImageBackground
@@ -55,19 +57,18 @@ const PraentScreen = () => {
         >
           Parent Zone
         </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            flexWrap: "wrap",
-            justifyContent: "space-evenly",
-          }}
-        >
-          <CardScreen />
-          <CardScreen />
-          <CardScreen />
-          <CardScreen />
-          <CustomButton textData={"Log Out"} />
-          <FooterScreen />
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <View style={{ flex: 1, flexDirection: "column" }}>
+            <View style={{ flex: 1, backgroundColor: "green" }}>
+              <Text>b</Text>
+            </View>
+            <View style={{ flex: 1, backgroundColor: "blue" }}>
+              <Text>c</Text>
+            </View>
+            <View style={{ flex: 1, backgroundColor: "red" }}>
+              <Text>c</Text>
+            </View>
+          </View>
         </View>
       </ImageBackground>
     </SafeAreaView>

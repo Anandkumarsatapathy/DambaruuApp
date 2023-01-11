@@ -14,7 +14,10 @@ import {
   Stories,
   VideoScreen,
   Festvideo,
-  
+  Subscription2,
+  Activity,
+  PolicyScreen,
+  Contact,
 } from "./Screen";
 import Splashscreen from "./Screen/SplashScreen/Splashscreen";
 import FooterScreen from "./Components/Footer";
@@ -54,6 +57,10 @@ export default function App() {
           <Stack.Screen name="Parentquiz" component={Parentquiz} />
           <Stack.Screen name="parent" component={parent} />
           <Stack.Screen name="Logout" component={Logout} />
+          <Stack.Screen name="Subscription" component={Subscription2} />
+          <Stack.Screen name="Activity" component={Activity} />
+          <Stack.Screen name="PolicyScreen" component={PolicyScreen} />
+          <Stack.Screen name="Contact" component={Contact} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

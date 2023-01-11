@@ -23,6 +23,7 @@ import Color from "../../AppConfig/colors.js";
 import { config } from "../../Utils/Api";
 import { useRoute } from "@react-navigation/native";
 import client from "../../Utils/Api";
+import * as SecureStore from "expo-secure-store";
 /* ModalPopup Component */
 const ModalPopup = ({ visible, children }) => {
   const [showModal, setShowModal] = useState(visible);
@@ -42,11 +43,9 @@ const ModalPopup = ({ visible, children }) => {
     </Modal>
   );
 };
-const HomeScreen = ({ navigation}) => {
+const HomeScreen = ({ navigation }) => {
   const route = useRoute();
-  console.log(route);
   const { ageGroup, stdName, toked, proAvatar } = route.params;
-  console.log(ageGroup);
   const [aImage, setaImage] = useState(proAvatar);
   const [profData, setprofData] = useState([]);
   const [data, setData] = useState([]);
@@ -82,9 +81,7 @@ const HomeScreen = ({ navigation}) => {
   /*Fetch Profile Images */
   const profileAvatar = async () => {
     try {
-      const res = await client.get(
-        `/user/profileAvatar`
-      );
+      const res = await client.get(`/user/profileAvatar`);
 
       setprofData(res.data.data);
     } catch (error) {
@@ -94,10 +91,7 @@ const HomeScreen = ({ navigation}) => {
   /** New videos Button Bg Images  */
   const fetchFestivalBtn = async () => {
     try {
-      const res = await client.get(
-        `/courses/festival/`,
-        yourConfig
-      );
+      const res = await client.get(`/courses/festival/`, yourConfig);
 
       setBtn(res.data.data);
     } catch (error) {
@@ -105,6 +99,14 @@ const HomeScreen = ({ navigation}) => {
     }
   };
   useEffect(() => {
+    SecureStore.getItemAsync("data").then((value) => {
+      const object = JSON.parse(value);
+      console.log("Home", object.ageGroup);
+      setAge(object);
+    });
+    SecureStore.getItemAsync("Token").then((data) => {
+      secureToken(data);
+    });
     profileAvatar();
     getStory();
     fetchFestivalBtn();
@@ -198,7 +200,7 @@ const HomeScreen = ({ navigation}) => {
             style={{
               height: 33,
               width: width - 220,
-              ...Font.fs26,
+              ...Font.fs22,
               marginLeft: 0,
               marginTop: 5,
               backgroundColor: "#194792",

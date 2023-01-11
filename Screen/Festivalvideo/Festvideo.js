@@ -60,7 +60,7 @@ const Festvideo = ({ route, navigation }) => {
         `/courses/videofestival/`,
         yourConfig
       );
-      console.log("Vedio=", res.data.data);
+
       setData(res.data.data);
       setintial(res.data.data[0].video_festivel);
     } catch (error) {
@@ -92,7 +92,7 @@ const Festvideo = ({ route, navigation }) => {
     <SafeAreaView style={[styles.container, { width: width, height: height }]}>
       {/**video Player */}
       <Video
-        style={[styles.flexVideo, { marginTop: height < 400 ? 40 : 30 }]}
+        style={[styles.flexVideo]}
         source={{
           uri: intial,
         }}
@@ -117,29 +117,72 @@ const Festvideo = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ccebd4",
+    width: "100%",
+    height: "100%",
   },
   item: {
-    padding: 20,
+    
     marginVertical: 8,
-    marginHorizontal: 16,
-    width: 110,
+    marginHorizontal: 10,
+    width: 160,
     height: 100,
     borderRadius: 10,
-    alignSelf: "center",
+   
   },
   flexImage: {
-    width: 110,
-    height: 100,
-    margin: 0,
-    borderRadius: 10,
+    width: 150,
+    height: 95,
+    marginBottom:60,
+    borderRadius: 12,
   },
   flexVideo: {
-    width: 720,
-    height: 240,
+    width: 600,
+    height: 230,
+    marginTop: 8,
+    padding: 20,
     alignSelf: "center",
-    marginBottom: -40,
+
+    borderRadius: 10,
+
     justifyContent: "center",
+  },
+  viewModalBackground: {
+    width: 600,
+    height: 200,
+    borderRadius: 20,
+
+    alignItems: "center",
+    marginBottom: -40,
+    marginLeft: 60,
+  },
+  modalContainer: {
+    width: 500,
+    height: 230,
+    backgroundColor: "#E9F1FF",
+
+    borderRadius: 20,
+    elevation: 20,
+
+    alignItems: "center",
+    shadowOffset: { width: -2, height: 4 },
+    shadowColor: "red",
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+
+  button: {
+    width: 160,
+    height: 45,
+    marginTop: 10,
+    alignSelf: "center",
+    alignItems: "center",
+    backgroundColor: "blue",
+    borderRadius: 40,
+    color: "white",
+    shadowOffset: { width: -2, height: 4 },
+    shadowColor: "#171717",
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
 });
 

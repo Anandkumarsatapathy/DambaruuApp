@@ -95,6 +95,14 @@ const Watching = ({ navigation }) => {
                       toked: item.token,
                       proAvatar: item.profile_picture,
                     });
+                    const data = {
+                      ageGroup: item.standard,
+                      stdName: item.name,
+                      toked: item.token,
+                      proAvatar: item.profile_picture,
+                    };
+                    const objectData = JSON.stringify(data);
+                    SecureStore.setItemAsync("data", objectData);
                   }}
                 >
                   <View
@@ -157,11 +165,11 @@ const Watching = ({ navigation }) => {
                 { backgroundColor: "transparent", paddingHorizontal: 0 },
               ]}
             >
-              <Text marginT-10 style={[styles.nameStyle]} numberOfLines={1}>
+              <Text style={[styles.nameStyle]} numberOfLines={1}>
                 Add Profile
               </Text>
               <TouchableOpacity onPress={() => navigation.navigate("Logout")}>
-                <Text marginT-10 style={[styles.nameStyle]} numberOfLines={1}>
+                <Text style={[styles.nameStyle]} numberOfLines={1}>
                   logout
                 </Text>
               </TouchableOpacity>

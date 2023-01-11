@@ -16,7 +16,7 @@ import { InterruptionModeIOS, Video } from "expo-av";
 import Style from "../VideoScreen/VideoScreenStyle.js";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { Entypo } from "@expo/vector-icons";
-
+import Font from "../../AppConfig/fonts"
 import client from "../../Utils/Api";
 const Item = ({ item, onPress }) => (
   <TouchableOpacity onPress={onPress} style={[styles.item]}>
@@ -187,9 +187,10 @@ const VideoScreen = ({ route, navigation }) => {
               {questionData && questionData.content_questions && (
                 <Text
                   style={{
-                    fontSize: 25,
-                    color: "black",
+                    // fontSize: 25,
+                    color: "#194792",
                     alignSelf: "center",
+                    ...Font.fs30B,
                   }}
                 >
                   Question: {questionData.content_questions[count].question}
@@ -241,8 +242,7 @@ const VideoScreen = ({ route, navigation }) => {
               <View style={{ flex: 1 }}>
                 <Text
                   style={{
-                    fontSize: 23,
-                    fontWeight: "bold",
+                    ...Font.fs30B,
                     color: "#194792",
                     marginTop: 55,
                     textAlign: "center",
@@ -258,9 +258,10 @@ const VideoScreen = ({ route, navigation }) => {
                 >
                   <Text
                     style={{
-                      fontSize: 20,
+                      color: "#194792",
+                      ...Font.fs24B,
                       color: "white",
-                      fontWeight: "bold",
+
                       marginTop: 5,
                       marginBottom: 10,
                     }}
@@ -291,8 +292,7 @@ const VideoScreen = ({ route, navigation }) => {
               <View style={{ flex: 1 }}>
                 <Text
                   style={{
-                    fontSize: 23,
-                    fontWeight: "bold",
+                    ...Font.fs30B,
                     color: "#194792",
                     marginTop: 55,
                     textAlign: "center",
@@ -308,9 +308,10 @@ const VideoScreen = ({ route, navigation }) => {
                 >
                   <Text
                     style={{
-                      fontSize: 20,
+                      color: "#194792",
+                      ...Font.fs24B,
                       color: "white",
-                      fontWeight: "bold",
+
                       marginTop: 5,
                       marginBottom: 10,
                     }}
@@ -351,18 +352,16 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   item: {
-    padding: 5,
-    marginVertical: 5,
-    marginHorizontal: 10,
-    width: 110,
-    height: 100,
+    marginVertical: 8,
+    marginHorizontal: 3,
+    width: 160,
+    height: 110,
     borderRadius: 10,
-    alignSelf: "center",
   },
   flexImage: {
-    width: 100,
-    height: 90,
-    margin: 0,
+    width: 155,
+    height: 95,
+
     borderRadius: 12,
   },
   flexVideo: {
@@ -399,16 +398,16 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
   },
- 
+
   button: {
     width: 160,
     height: 45,
     marginTop: 10,
     alignSelf: "center",
     alignItems: "center",
-    backgroundColor: "blue",
+    backgroundColor: "#FFCC23",
     borderRadius: 40,
-    color: "white",
+  
     shadowOffset: { width: -2, height: 4 },
     shadowColor: "#171717",
     shadowOpacity: 0.2,

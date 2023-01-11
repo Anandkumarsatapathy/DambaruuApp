@@ -28,7 +28,7 @@ const { width, height } = Dimensions.get("window");
 import { useFonts, Schoolbell_400Regular } from "@expo-google-fonts/schoolbell";
 
 // eslint-disable-next-line react/prop-types
-const Login = ({ navigation }) => {
+const PolicyScreen = ({ navigation }) => {
   const { width, height } = useWindowDimensions();
   const [mobile, setMobile] = useState(""); // Intial mobinumber"
   const [mobileno, setMobileno] = useState(""); //after Check Mobile number
@@ -51,53 +51,8 @@ const Login = ({ navigation }) => {
       return false;
     }
   };
-  /* Post Request of mobile No */
-  //   const handleNo = ()=>{
-  //     const checkNo = submitNo(mobile);
-  //     if (!checkNo) {
-  //       user_login({
-  //         mobile:mobileno
-  //       })
-  //         .then((result) => {
-  //           if (result.status == 200) {
-  //            navigation.navigate("OTP");
-  //           }
-  //         })
-  //         .catch((err) => {
-  //           console.error(err);
-  //         });
-  //     } else {
-  //       console.log("Please Enter the valid Number ");
-  //     }
-  //  }
-
-  // Context Provide
-
-  // return(
-  //   <mobile_Number.Provider value={mobile}>
-
-  //   {/* <ChildInfoVariant/> */}
-  //  </mobile_Number.Provider>
-  // )
 
   /* Temp post operation */
-  const handleSubmitNo = async () => {
-    client
-      .post("/user/generate-otp/", {
-        mobile_number: mobile,
-      })
-      .then((response) => {
-        if (response?.data?.status === "success") {
-          let tanXid = response?.data?.txn_id;
-          SecureStore.setItemAsync("TxnId", tanXid.toString());
-          SecureStore.setItemAsync("mobileNumber", mobile);
-          navigation.navigate("OTP", { txnID: response?.data?.txn_id });
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
 
   return (
     <>
@@ -128,28 +83,7 @@ const Login = ({ navigation }) => {
               />
             </View>
             <View style={styles.subView}>
-              <Text style={styles.normalText}>Enter your Mobile Number</Text>
-              
-              <Text style={styles.grayText}>
-                We will send you a confirmation code
-              </Text>
-              <View style={styles.inputView}>
-                <View style={styles.flagView}>
-                  <Image source={image.flag} style={styles.flag} />
-                </View>
-                <TextInput
-                  keyboardType="phone-pad"
-                  style={styles.inputStyle}
-                  onChangeText={(text) => setMobile(text)}
-                  value={mobile}
-                  maxLength={10}
-                />
-              </View>
-              <View style={cs.ac}>
-                <TouchableOpacity style={cs.commonBtn} onPress={handleSubmitNo}>
-                  <Text style={cs.commonBtnText}>Submit</Text>
-                </TouchableOpacity>
-              </View>
+              <View><Text>Policy </Text></View>
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
@@ -158,7 +92,7 @@ const Login = ({ navigation }) => {
     </>
   );
 };
-export default Login;
+export default PolicyScreen;
 const styles = StyleSheet.create({
   mainView: {
     ...cs.flex,
@@ -176,7 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
 
     fontFamily: "Schoolbell_400Regular",
-  
+
     color: Color.blueColor,
     letterSpacing: 1,
   },
@@ -224,7 +158,7 @@ const styles = StyleSheet.create({
   inputStyle: {
     paddingHorizontal: 15,
     fontFamily: "Schoolbell_400Regular",
-     fontSize:22,
+    fontSize: 22,
     height: 45,
     color: Color.inputTextColor,
     ...cs.flex,

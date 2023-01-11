@@ -20,7 +20,7 @@ import CardScreen from "../../Components/Card/CardScreen";
 import { LinearGradient } from "expo-linear-gradient";
 import image from "../../AppConfig/image.js";
 import cs from "../../AppConfig/CommonStyle.js";
-import fonts from "../../AppConfig/fonts.js";
+import Font from "../../AppConfig/fonts.js";
 import client from "../../Utils/Api";
 import { Entypo } from "@expo/vector-icons";
 import * as SecureStore from "expo-secure-store";
@@ -115,7 +115,7 @@ const ChildInfoVariant = ({ navigation }) => {
       })
       .then((response) => {
         if (response.data.status === "success") {
-        
+          SecureStore.setItemAsync("ageGroup",selectedAge);
           navigation.navigate("Home", {
             ageGroup: selectedAge,
             stdName: response.data.data.name,
@@ -151,7 +151,11 @@ const ChildInfoVariant = ({ navigation }) => {
             </View>
             <View style={{ textAlign: "center" }}>
               <Text
-                style={{ fontSize: 25, color: "black", textAlign: "center" }}
+                style={{
+                  color: "#194792",
+                  textAlign: "center",
+                  ...Font.fs24,
+                }}
               >
                 Choose Profile Picture
               </Text>
@@ -234,7 +238,7 @@ const ChildInfoVariant = ({ navigation }) => {
             <View style={[cs.row, cs.center]}>
               <Image source={image.star} />
               <Text
-                style={[styles.boldText, { textAlign: "center", margin: 10 }]}
+                style={[styles.boldText, { textAlign: "center", margin: 0 }]}
               >
                 Select Age Group
               </Text>
@@ -255,7 +259,7 @@ const ChildInfoVariant = ({ navigation }) => {
                     <View
                       style={{
                         width: width / 1.3,
-                        height: 90,
+                        height: width /4,
                         justifyContent: "space-evenly",
                         marginBottom: 15,
                         marginLeft: 38,
@@ -277,8 +281,7 @@ const ChildInfoVariant = ({ navigation }) => {
                           borderColor: "#6D6E71",
                           resizeMode: "contain",
                           marginLeft: -240,
-                          shadowColor: "black",
-                          shadowOffset: { height: 2 },
+                        
                         }}
                       />
                       <View

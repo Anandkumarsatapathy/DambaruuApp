@@ -35,9 +35,8 @@ const styles = StyleSheet.create({
     width: "60%",
     flexDirection: "row",
     justifyContent: "center",
-    
-    
   },
+
 });
 
 export default styles;

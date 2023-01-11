@@ -47,7 +47,7 @@ const OTP = ({ navigation, route }) => {
       // return true;
       return val;
     } else {
-      console.log("Enter the correct OTP");
+      // console.log("Enter the correct OTP");
       return false;
     }
   };
@@ -122,8 +122,8 @@ const OTP = ({ navigation, route }) => {
               />
             </View>
             <View style={styles.subView}>
-              <Text style={styles.normalText}>Enter your</Text>
-              <Text style={styles.boldText}>OTP</Text>
+              <Text style={styles.normalText}>Enter your OTP</Text>
+             
               <Text style={styles.grayText}>
                 4 digit OTP sent to your mobile number
               </Text>
@@ -189,9 +189,10 @@ const OTP = ({ navigation, route }) => {
                 </TouchableOpacity>
               </View>
               <View marginT-10 style={{ alignItems: "flex-end" }}>
-                <Pressable>
-                  <Text>Resend OTP?</Text>
-                </Pressable>
+                {/* Resend Button */}
+                <TouchableOpacity>
+                  <Text style={styles.resend}>Resend OTP?</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </ScrollView>
@@ -216,23 +217,22 @@ const styles = StyleSheet.create({
     borderRadius: 192.5,
   },
   normalText: {
-    fontFamily: "Schoolbell_400Regular",
-    fontSize:22,
+    ...Font.fs26,
     color: Color.blueColor,
     letterSpacing: 1,
   },
   boldText: {
-     ...Font.fs22M,
+    ...Font.fs22M,
     color: Color.blueColor,
     letterSpacing: 1,
     lineHeight: 40,
   },
   grayText: {
-     ...Font.fs15L,
+    ...Font.fs20L,
     color: Color.grayColor,
   },
   grayText15R: {
-     ...Font.fs15,
+    ...Font.fs15,
     color: Color.grayColor,
   },
   themeText15R: {
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     paddingHorizontal: 15,
-     ...Font.f15,
+    ...Font.f15,
     height: 45,
     color: Color.inputTextColor,
   },
@@ -286,5 +286,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     backgroundColor: "#e1f2f2",
+    ...Font.fs20,
+  },
+  resend: {
+    ...Font.fs20B,
   },
 });

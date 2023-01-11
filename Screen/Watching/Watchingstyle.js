@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     ...cs.ac,
   },
   nameStyle: {
-    ...Font.fs16,
+    ...Font.fs22L,
     color: Color.blueColor,
   },
 });

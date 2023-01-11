@@ -1,7 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
-
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Ionicons,
   MaterialCommunityIcons,
@@ -10,12 +8,30 @@ import {
   FontAwesome5,
 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import * as SecureStore from "expo-secure-store";
 const FooterScreen = () => {
+  const [data, setData] = useState([]);
+  console.log("Footerdata:-", data);
+  useEffect(() => {
+    SecureStore.getItemAsync("data").then((value) => {
+      const object = JSON.parse(value);
+      setData(object);
+    });
+  }, []);
 
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("Home", {
+            ageGroup: data.standard,
+            stdName: data.stdName,
+            toked: data.token,
+            proAvatar: data.profile_picture,
+          })
+        }
+      >
         <FontAwesome5
           style={styles.iconImage}
           name="home"
@@ -31,7 +47,7 @@ const FooterScreen = () => {
           color="#194792"
         />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Stories")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Activity")}>
         <MaterialCommunityIcons
           style={styles.iconImage}
           name="message-text"
@@ -39,7 +55,7 @@ const FooterScreen = () => {
           color="#194792"
         />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("VideoScreen")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Subscription")}>
         <Entypo
           style={styles.iconImage}
           name="folder-video"

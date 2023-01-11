@@ -17,11 +17,13 @@ export default commonStyle = {
     height: 45,
     backgroundColor: Color.blueColor,
     borderRadius: 22.5,
+  
     justifyContent: "center",
     alignItems: "center",
+  marginTop:60,
   },
   commonBtnText: {
-    ...Font.fs15M,
+    ...Font.fs24B,
 
     color: Color.white,
     letterSpacing: 1,

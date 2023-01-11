@@ -6,6 +6,8 @@ const Logout = () => {
   const navigation = useNavigation();
   const onLogout = () => {
     SecureStore.setItemAsync("isExistingUser", false);
+    SecureStore.setItemAsync("ageGroup", false);
+    SecureStore.setItemAsync("Token", false);
     navigation.navigate("Login");
   };
   return (

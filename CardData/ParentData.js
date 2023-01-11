@@ -1,19 +1,25 @@
+import Image from "../AppConfig/image";
+
 const ParentData = [
   {
     id: 1,
-    images: require("../assets/parent/chilfInfo.png"),
+    images: Image.chilfInfo,
+  
   },
   {
     id: 2,
-    images: require("../assets/parent/assignmentTest.png"),
+    images: Image.assignmentTest,
+   
   },
   {
     id: 3,
-    images: require("../assets/parent/termCondition.png"),
+    images: Image.termCondition,
+  
   },
   {
     id: 4,
-    images: require("../assets/parent/contactUs.png"),
+    images: Image.contactUs,
+  
   },
 ];
 export default ParentData;

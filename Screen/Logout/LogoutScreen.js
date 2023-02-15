@@ -5,9 +5,11 @@ import { useNavigation } from "@react-navigation/native";
 const Logout = () => {
   const navigation = useNavigation();
   const onLogout = () => {
-    SecureStore.setItemAsync("isExistingUser", false);
-    SecureStore.setItemAsync("ageGroup", false);
-    SecureStore.setItemAsync("Token", false);
+    SecureStore.deleteItemAsync("isExistingUser");
+    SecureStore.deleteItemAsync("TxnId");
+    SecureStore.deleteItemAsync("mobileNumber");
+    SecureStore.deleteItemAsync("data");
+    SecureStore.deleteItemAsync("Token");
     navigation.navigate("Login");
   };
   return (

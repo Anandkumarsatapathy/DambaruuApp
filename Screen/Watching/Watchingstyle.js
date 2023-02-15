@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     padding: 20,
     height: height / 1.7,
-    marginTop: -30,
+    marginTop: -40,
   },
   inputView: {
     flexDirection: "row",
@@ -69,11 +69,14 @@ const styles = StyleSheet.create({
     ...cs.flex,
   },
   girlImgView: {
-    marginTop: height / 20,
+    marginTop: height / 130,
     ...cs.ac,
   },
   nameStyle: {
     ...Font.fs22L,
+    marginTop: height /-65,
+
+ marginLeft:10,
     color: Color.blueColor,
   },
 });

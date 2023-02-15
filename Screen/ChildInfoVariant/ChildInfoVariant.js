@@ -11,6 +11,7 @@ import {
   ScrollView,
   ImageBackground,
   ToastAndroid,
+
 } from "react-native";
 import styles from "./ChildScreenStyle";
 import cardData from "../../CardData/InfoData";
@@ -52,6 +53,7 @@ const ChildInfoVariant = ({ navigation }) => {
   const [selectedAge, setSelectedAge] = useState("");
   const [mobile, setMobile] = useState("");
   const [avtar, setAvtar] = useState([]); //Avtart images Data
+ 
   const [childname, setChildname] = useState(""); //Student name
   const [selectedAvtar, setSelectedAvtar] = useState(" ");
   const [avatarId, setAvatarId] = useState("");
@@ -98,9 +100,6 @@ const ChildInfoVariant = ({ navigation }) => {
     getProfileAvtar();
   }, []);
 
-
-  
-
   // Student Table Post Request
 
   const handleSubmitNo = () => {
@@ -115,7 +114,8 @@ const ChildInfoVariant = ({ navigation }) => {
       })
       .then((response) => {
         if (response.data.status === "success") {
-          SecureStore.setItemAsync("ageGroup",selectedAge);
+          ToastAndroid.show("Welcome to Dambaruu!", ToastAndroid.LONG);
+          SecureStore.setItemAsync("ageGroup", selectedAge);
           navigation.navigate("Home", {
             ageGroup: selectedAge,
             stdName: response.data.data.name,
@@ -259,7 +259,7 @@ const ChildInfoVariant = ({ navigation }) => {
                     <View
                       style={{
                         width: width / 1.3,
-                        height: width /4,
+                        height: width / 4,
                         justifyContent: "space-evenly",
                         marginBottom: 15,
                         marginLeft: 38,
@@ -281,7 +281,6 @@ const ChildInfoVariant = ({ navigation }) => {
                           borderColor: "#6D6E71",
                           resizeMode: "contain",
                           marginLeft: -240,
-                        
                         }}
                       />
                       <View

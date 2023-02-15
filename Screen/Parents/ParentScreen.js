@@ -10,6 +10,8 @@ import {
 import { React, useState } from "react";
 import { useWindowDimensions } from "react-native";
 import styles from "./PraentStyle";
+
+import cs from "../../AppConfig/CommonStyle.js";
 import { FontAwesome5, FontAwesome } from "@expo/vector-icons";
 import CardScreen from "../../Components/Card/CardScreen";
 import CustomButton from "../../Components/Button/CustomButton";
@@ -17,6 +19,7 @@ import FooterScreen from "../../Components/Footer/FooterScreen";
 import { SafeAreaView } from "react-native";
 import { ParentData } from "../../CardData";
 import { useNavigation } from "@react-navigation/native";
+ import Logout from "../../Screen/Logout/LogoutScreen"
 const PraentScreen = () => {
   const navigation = useNavigation();
   const { height, width } = useWindowDimensions();
@@ -30,7 +33,7 @@ const PraentScreen = () => {
     {
       id: "1",
       image: Parentdata.image1,
-      locationNavigate: "ChildInfoVariant",
+      locationNavigate: "ChildInfo",
     },
     {
       id: "2",
@@ -135,8 +138,8 @@ const PraentScreen = () => {
 
         {/* Button Part  */}
         <View style={{ flex: 1, flexDirection: "column" }}>
-          <View style={{ flex: 1, backgroundColor: "green" }}>
-            <Text>b</Text>
+          <View style={{ flex: 1 }}>
+         <Logout/>
           </View>
         </View>
       </ImageBackground>
@@ -155,5 +158,20 @@ const style = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: 100,
+  },
+  buttonContainer: {
+    alignItems: "center",
+    marginTop: 20,
+  },
+  acceptButton: {
+    backgroundColor: "#4CAF50",
+    padding: 12,
+    borderRadius: 4,
+  },
+  acceptButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    textAlign: "center",
   },
 });

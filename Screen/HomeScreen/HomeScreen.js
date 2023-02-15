@@ -179,41 +179,70 @@ const HomeScreen = ({ navigation }) => {
           justifyContent: "center",
         }}
       >
-        <View style={{ flexDirection: "row" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
+        >
+          {/* Back button */}
+          <TouchableOpacity >
+            <Image
+              source={image.backIcon}
+              style={{
+                width: 25,
+                height: 25,
+                marginLeft: -50,
+                resizeMode: "contain",
+              }}
+            />
+          </TouchableOpacity>
           {/* Profile image  */}
           <TouchableOpacity onPress={() => setVisible(true)}>
             <Image
               source={{ uri: aImage }}
               style={{
-                width: 49,
-                height: 49,
+                width: 62,
+                height: 62,
+                top: -24,
+                left: -62.5,
+                position: "absolute",
                 borderWidth: 2,
                 borderRadius: 50,
-                borderColor: "#194792",
+                borderColor: "white",
                 resizeMode: "contain",
-                backgroundColor: "white",
+                backgroundColor: "#194792",
               }}
             />
           </TouchableOpacity>
-
-          <Text
-            style={{
-              height: 33,
-              width: width - 220,
-              ...Font.fs22,
-              marginLeft: 0,
-              marginTop: 5,
-              backgroundColor: "#194792",
-              color: "white",
-              borderRadius: 10,
-              borderColor: "#FFCB23",
-              borderWidth: 2,
-              textAlign: "center",
-              justifyContent: "space-around",
-            }}
-          >
-            Hello {stdName}
-          </Text>
+         
+            <Text
+              style={{
+                height:40,
+                width: width - 223,
+                ...Font.fs22,
+                marginLeft: -89,
+                marginTop: 15.9,
+                color: "white",
+                // borderColor: "white",
+                borderLeftColor: "#194792",
+                borderTopColor: "white",
+                borderBottomColor: "white",
+                borderRightColor: "white",
+                borderWidth: 2,
+                textAlign: "center",
+                alignItems:"center",
+                backgroundColor: "#194792",
+                borderBottomLeftRadius: 0,
+                borderBottomRightRadius: 10,
+                borderTopLeftRadius: 0,
+                borderTopRightRadius: 10,
+              }}
+            >
+              Hello {stdName}
+            </Text>
+         
         </View>
       </ImageBackground>
 

@@ -30,29 +30,11 @@ import { useFonts, Schoolbell_400Regular } from "@expo-google-fonts/schoolbell";
 // eslint-disable-next-line react/prop-types
 const PolicyScreen = ({ navigation }) => {
   const { width, height } = useWindowDimensions();
-  const [mobile, setMobile] = useState(""); // Intial mobinumber"
-  const [mobileno, setMobileno] = useState(""); //after Check Mobile number
-  /*Fonts*/
-  // let [fontsLoaded] = useFonts({
-  //   Schoolbell_400Regular,
-  // });
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
-  /* validation of mobile No */
-  const submitNo = (mobile) => {
-    const phoneno = /^\d{10}$/;
-    console.log(mobile);
-    if (phoneno.test(mobile)) {
-      setMobileno(mobile);
-      return true;
-    } else {
-      console.log("Please Enter the Correct Number");
-      return false;
-    }
-  };
+   const [isAccepted, setIsAccepted] = useState(false);
 
-  /* Temp post operation */
+   const handleAccept = () => {
+     setIsAccepted(true);
+   };
 
   return (
     <>
@@ -83,7 +65,77 @@ const PolicyScreen = ({ navigation }) => {
               />
             </View>
             <View style={styles.subView}>
-              <View><Text>Policy </Text></View>
+              <ScrollView>
+                <Image
+                  source={require("../../assets/bunny.png")}
+                  style={styles.logo}
+                />
+                <Text style={styles.header}>
+                  Welcome to the "Little Learners" Preschool Learning
+                  Application
+                </Text>
+                <Text style={styles.paragraph}>
+                  By using the Application, you agree to be bound by these terms
+                  and conditions (the "Terms"). If you do not agree to these
+                  Terms, please do not use the Application.
+                </Text>
+                <Text style={styles.paragraph}>
+                  The Application is intended for use by preschoolers and their
+                  parents or guardians. We grant you a limited, non-exclusive,
+                  non-transferable license to use the Application on any device
+                  that you own or control, solely for your personal,
+                  non-commercial use. Any commercial use of the Application is
+                  strictly prohibited.
+                </Text>
+                <Text style={styles.paragraph}>
+                  The Application contains content that is protected by
+                  copyright, trademark, and other intellectual property laws. We
+                  own or have a license to use all intellectual property rights
+                  in and to the Application. You may not copy, modify,
+                  distribute, sell, or transfer any content from the Application
+                  without our prior written consent.
+                </Text>
+                <Text style={styles.paragraph}>
+                  The Application may allow you to submit or post content,
+                  including but not limited to, comments, images, and videos
+                  (“User-Generated Content”). You are solely responsible for
+                  your User-Generated Content and the consequences of posting or
+                  publishing it. By posting User-Generated Content, you
+                  represent and warrant that: (i) you own or have the necessary
+                  rights and permissions to use and authorize us to use all
+                  patent, trademark, trade secret, copyright or other
+                  proprietary rights in and to any and all User-Generated
+                  Content to enable inclusion and use of the User-Generated
+                  Content in the manner contemplated by the Application and
+                  these Terms; (ii) your User-Generated Content does not violate
+                  any third-party rights, including but not limited to,
+                  intellectual property rights and privacy rights; and (iii)
+                  your User-Generated Content complies with these Terms and all
+                  applicable laws.
+                </Text>
+                <Text style={styles.paragraph}>
+                  We respect your privacy and are committed to protecting it.
+                  Please refer to our privacy policy for information on how we
+                  collect, use, and protect your personal information.
+                </Text>
+                <Text style={styles.paragraph}>
+                  The Application is provided on an "as is" and "as available"
+                  basis, and we make no representations or warranties of any
+                  kind, express or implied, as to the operation of the
+                  Application or the information, content, materials, or
+                  products
+                </Text>
+              </ScrollView>
+              {!isAccepted && (
+                <View style={styles.buttonContainer}>
+                  <TouchableOpacity
+                    style={styles.acceptButton}
+                    onPress={handleAccept}
+                  >
+                    <Text style={styles.acceptButtonText}>I Agree</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
@@ -166,5 +218,39 @@ const styles = StyleSheet.create({
   girlImgView: {
     marginTop: height / 20,
     ...cs.ac,
+  },
+  logo: {
+    alignSelf: "center",
+    width: 200,
+    height: 60,
+    resizeMode: "contain",
+    marginVertical: 20,
+  },
+  header: {
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 10,
+  },
+  paragraph: {
+    fontSize: 14,
+    textAlign: "justify",
+    marginBottom: 10,
+    lineHeight: 20,
+  },
+  buttonContainer: {
+    alignItems: "center",
+    marginTop: 20,
+  },
+  acceptButton: {
+    backgroundColor: "#4CAF50",
+    padding: 12,
+    borderRadius: 4,
+  },
+  acceptButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    textAlign: "center",
   },
 });

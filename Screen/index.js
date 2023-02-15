@@ -16,6 +16,8 @@ export { default as Parent } from "./Parents/ParentScreen";
 export { default as ParentQuiz2 } from "./ParentQuiz2/ParentQuiz2";
 export { default as Parent2 } from "./Parents2/Parents2";
 export { default as Activity } from "./Activity/ActivitScreen";
+export { default as Alphabat } from "./Alphabat/AlphabatScreen";
+export { default as Number } from "./Number/NumberScreen";
 export { default as Congrats } from "./Congrats/Congrats";
 export { default as PolicyScreen } from "./Policy/PolicyScreen";
 export { default as Contact } from "./Contact/Contact";

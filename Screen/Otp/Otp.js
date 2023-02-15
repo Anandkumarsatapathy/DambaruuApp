@@ -25,7 +25,7 @@ import Color from "../../AppConfig/colors.js";
 import * as SecureStore from "expo-secure-store";
 const { width, height } = Dimensions.get("window");
 const OTP = ({ navigation, route }) => {
-  const { txnID } = route.params;
+  const { txnID, mobileNo } = route.params;
   const firstInput = useRef();
   const secondInput = useRef();
   const thirdInput = useRef();
@@ -70,6 +70,7 @@ const OTP = ({ navigation, route }) => {
   //      console.log("Please Put pop OTP");
   //    }
   // }
+  
   /* OTP Validation Logic */
   const handleSubmitOTP = () => {
     const ans = submitOTP(otp);
@@ -88,7 +89,20 @@ const OTP = ({ navigation, route }) => {
         }
       })
       .catch(function (error) {
-        console.log(error);
+        console.log(error.message);
+      });
+  };
+  /*reSend OTO */
+  const reSendOTP = () => {
+    client
+      .post("/user/generate-otp/", {
+        mobile_number: mobileNo,
+      })
+      .then(() => {
+        console.log("OTP Resend Successfully");
+      })
+      .catch(function (error) {
+        console.log(error.message);
       });
   };
 
@@ -123,7 +137,7 @@ const OTP = ({ navigation, route }) => {
             </View>
             <View style={styles.subView}>
               <Text style={styles.normalText}>Enter your OTP</Text>
-             
+
               <Text style={styles.grayText}>
                 4 digit OTP sent to your mobile number
               </Text>
@@ -190,7 +204,7 @@ const OTP = ({ navigation, route }) => {
               </View>
               <View marginT-10 style={{ alignItems: "flex-end" }}>
                 {/* Resend Button */}
-                <TouchableOpacity>
+                <TouchableOpacity onPress={reSendOTP}>
                   <Text style={styles.resend}>Resend OTP?</Text>
                 </TouchableOpacity>
               </View>

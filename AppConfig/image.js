@@ -8,7 +8,7 @@ export default image = {
 
   // ---------- logoImages ----------
   logoTxt: require("./../assets/logoImages/logoTxt.png"),
-  sub_logoTxt: require("./../assets/logoImages/sub_logoTxt.png"),
+  sub_logoTxt: require("./../assets/logoImages/sub_logo3.png"),
   logo: require("./../assets/logoImages/logo.png"),
 
   // ---------- images ----------

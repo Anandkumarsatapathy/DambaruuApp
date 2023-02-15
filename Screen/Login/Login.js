@@ -10,6 +10,7 @@ import {
   Platform,
   Pressable,
   TouchableOpacity,
+  StatusBar,
 } from "react-native";
 
 import React, { createContext, useState } from "react";
@@ -91,7 +92,10 @@ const Login = ({ navigation }) => {
           let tanXid = response?.data?.txn_id;
           SecureStore.setItemAsync("TxnId", tanXid.toString());
           SecureStore.setItemAsync("mobileNumber", mobile);
-          navigation.navigate("OTP", { txnID: response?.data?.txn_id });
+          navigation.navigate("OTP", {
+            txnID: response?.data?.txn_id,
+            mobileNo: mobile,
+          });
         }
       })
       .catch(function (error) {
@@ -113,7 +117,7 @@ const Login = ({ navigation }) => {
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : height}
         >
-          <ScrollView contentContainerStyle={{}}>
+          <ScrollView>
             <View style={{ alignItems: "center", marginTop: 50 }}>
               <Image source={image.logoTxt} style={{ resizeMode: "contain" }} />
               <Image
@@ -129,7 +133,7 @@ const Login = ({ navigation }) => {
             </View>
             <View style={styles.subView}>
               <Text style={styles.normalText}>Enter your Mobile Number</Text>
-              
+
               <Text style={styles.grayText}>
                 We will send you a confirmation code
               </Text>
@@ -176,7 +180,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
 
     fontFamily: "Schoolbell_400Regular",
-  
+
     color: Color.blueColor,
     letterSpacing: 1,
   },
@@ -224,7 +228,7 @@ const styles = StyleSheet.create({
   inputStyle: {
     paddingHorizontal: 15,
     fontFamily: "Schoolbell_400Regular",
-     fontSize:22,
+    fontSize: 22,
     height: 45,
     color: Color.inputTextColor,
     ...cs.flex,

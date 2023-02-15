@@ -8,7 +8,7 @@ const Splashscreen = ({ navigation }) => {
   const { height, width } = useWindowDimensions();
   /**Logic For Existing User */
   const existUser = (id) => {
-    if (id != null) {
+    if (id) {
       navigation.navigate("Watch");
     } else {
       navigation.navigate("Login");
@@ -20,7 +20,7 @@ const Splashscreen = ({ navigation }) => {
         SecureStore.getItemAsync("isExistingUser").then((data) => {
           existUser(data);
         });
-      }, 6050),
+      }, 6350),
     []
   );
 

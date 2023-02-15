@@ -23,6 +23,7 @@ const Stories = ({ navigation, route }) => {
   const { subName, toked, subId } = route.params;
   //console.log("id", subId);
   const [data, setData] = useState([]);
+  console.log(data);
   /*const [count, setCount] = useState([]);*/
   const [error, setError] = useState([]);
 

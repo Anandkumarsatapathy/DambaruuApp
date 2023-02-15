@@ -7,7 +7,6 @@ export default {
   inputTextColor: '#2C3C53',
   yellowLight: '#FFCC23',
   black: '#343434',
-  
   green:'#427F3B',
   grayDark: '#3D3D3D',
   yellow: '#E69A00',

@@ -30,29 +30,17 @@ import { useFonts, Schoolbell_400Regular } from "@expo-google-fonts/schoolbell";
 // eslint-disable-next-line react/prop-types
 const Contact = ({ navigation }) => {
   const { width, height } = useWindowDimensions();
-  const [mobile, setMobile] = useState(""); // Intial mobinumber"
-  const [mobileno, setMobileno] = useState(""); //after Check Mobile number
-  /*Fonts*/
-  // let [fontsLoaded] = useFonts({
-  //   Schoolbell_400Regular,
-  // });
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
-  /* validation of mobile No */
-  const submitNo = (mobile) => {
-    const phoneno = /^\d{10}$/;
-    console.log(mobile);
-    if (phoneno.test(mobile)) {
-      setMobileno(mobile);
-      return true;
-    } else {
-      console.log("Please Enter the Correct Number");
-      return false;
-    }
-  };
 
-  /* Temp post operation */
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = () => {
+    // code to handle form submission
+  };
+  
+
+
 
   return (
     <>
@@ -69,7 +57,7 @@ const Contact = ({ navigation }) => {
           behavior={Platform.OS === "ios" ? "padding" : height}
         >
           <ScrollView contentContainerStyle={{}}>
-            <View style={{ alignItems: "center", marginTop: 50 }}>
+            <View style={{ alignItems: "center", marginTop: 20 }}>
               <Image source={image.logoTxt} style={{ resizeMode: "contain" }} />
               <Image
                 source={image.sub_logoTxt}
@@ -83,8 +71,40 @@ const Contact = ({ navigation }) => {
               />
             </View>
             <View style={styles.subView}>
-              <View>
-                <Text>Contact </Text>
+              <View style={styles.container}>
+                <Image
+                  source={require("../../assets/bunny.png")}
+                  style={styles.image}
+                />
+                <Text style={styles.header}>Contact Us</Text>
+                <View style={styles.formContainer}>
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Name"
+                    value={name}
+                    onChangeText={(text) => setName(text)}
+                  />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Email"
+                    value={email}
+                    onChangeText={(text) => setEmail(text)}
+                  />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Message"
+                    value={message}
+                    onChangeText={(text) => setMessage(text)}
+                    multiline={true}
+                    numberOfLines={4}
+                  />
+                  <TouchableOpacity
+                    style={styles.submitButton}
+                    onPress={handleSubmit}
+                  >
+                    <Text style={styles.submitButtonText}>Submit</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
           </ScrollView>
@@ -168,5 +188,40 @@ const styles = StyleSheet.create({
   girlImgView: {
     marginTop: height / 20,
     ...cs.ac,
+  },
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
+  },
+  header: {
+    fontSize: 24,
+    marginBottom: 20,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    marginBottom: 20,
+  },
+  formContainer: {
+    width: "100%",
+  },
+  input: {
+    height: 40,
+    borderColor: "gray",
+    borderWidth: 1,
+    marginBottom: 20,
+    padding: 10,
+  },
+  submitButton: {
+    backgroundColor: "orange",
+    padding: 15,
+    alignItems: "center",
+    borderRadius: 5,
+  },
+  submitButtonText: {
+    color: "white",
+    fontWeight: "bold",
   },
 });
